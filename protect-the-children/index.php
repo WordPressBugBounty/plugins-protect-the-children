@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Protect the Children!
  * Description: Easily password protect the child pages/posts of a post that is password protected.
- * Version: 1.4.2
+ * Version: 1.4.3
  * Author: Miller Media (Matt Miller)
  * Author URI: www.millermedia.io
  * Requires PHP: 8.1
@@ -13,7 +13,7 @@
 
 
 if ( ! defined( 'PROTECT_THE_CHILDREN_PLUGIN_VERSION' ) ) {
-    define( 'PROTECT_THE_CHILDREN_PLUGIN_VERSION', '1.4.2' );
+    define( 'PROTECT_THE_CHILDREN_PLUGIN_VERSION', '1.4.3' );
 }
 
 if ( version_compare( PHP_VERSION, '8.1', '<' ) ) {
@@ -33,8 +33,10 @@ add_action('plugins_loaded', function() {
 require_once( PTC_PLUGIN_PATH . '_inc/helpers.php' );
 require_once( PTC_PLUGIN_PATH . '_inc/admin.php' );
 require_once( PTC_PLUGIN_PATH . '_inc/deprecated.php' );
+require_once( PTC_PLUGIN_PATH . '_inc/review-notice.php' );
 
 new ProtectTheChildren();
+new PTC_ReviewNotice( 'Protect the Children', 'protect-the-children', 'ptc_activated_on', 'protect-the-children', PTC_PLUGIN_URL . 'assets/icon-256x256.jpg' );
 
 /**
  * On front-end page load, check the post's parent ID
@@ -94,10 +96,14 @@ function PTC_update_db_check() {
 
         $password_pages = get_pages( array( 'meta_key' => '_protect_children', 'meta_value' => 'on' ) );
 
-        foreach( $password_pages as $page ) { 
+        foreach( $password_pages as $page ) {
             update_post_meta( $page->ID, 'protect_children', '1' );
             delete_post_meta( $page->ID, '_protect_children' );
-        }   
+        }
+    }
+
+    if ( ! get_option( 'ptc_activated_on' ) ) {
+        update_option( 'ptc_activated_on', time() );
     }
 
     update_option( 'PTC_plugin_version', PROTECT_THE_CHILDREN_PLUGIN_VERSION );
