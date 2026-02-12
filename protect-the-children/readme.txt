@@ -1,8 +1,8 @@
 === Protect the Children! ===
 Contributors: millermedianow, millermediadev, mohsinrasool, deltafactory, danmossop, ad_taylor
-Tags: password protect, password, protected, protect, password, child, parent, edit, visibility
+Tags: password protect, child pages, parent pages, visibility, password
 Tested up to: 6.9.1
-Stable tag: 1.4.6
+Stable tag: 1.4.7
 Requires PHP: 8.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -21,6 +21,23 @@ Once you choose the 'Visibility' option on a post and update it to 'Password Pro
 
 PROTECT THE CHILDREN!
 
+== Localizations ==
+This plugin is available in the following languages:
+
+* English
+* Chinese Simplified (简体中文)
+* Dutch (Nederlands)
+* French (Français)
+* German (Deutsch)
+* Italian (Italiano)
+* Japanese (日本語)
+* Polish (Polski)
+* Portuguese - Brazil (Português do Brasil)
+* Russian (Русский)
+* Spanish (Español)
+* Swedish (Svenska)
+* Turkish (Türkçe)
+
 == Installation ==
 
 1. Upload the plugin files to the `/wp-content/plugins/protect-the-children` directory, or install the plugin through the WordPress plugins screen directly.
@@ -38,6 +55,10 @@ PROTECT THE CHILDREN!
 7. WP <5.0 Child posts displayed as protected by parent
 
 == Changelog ==
+
+= 1.4.7 =
+* Added translations for Russian, Polish, Dutch, Turkish, and Swedish
+* Updated localization section in readme
 
 = 1.4.6 =
 * Added Chinese Simplified (zh_CN) translation
